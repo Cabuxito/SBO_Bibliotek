@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SBO_Bibliotek\SBO.SBO_Bibliotek.Domain\SBO.SBO_Bibliotek.Domain.csproj" />
+    <ProjectReference Include="..\SBO_Bibliotek\SBO.SBO_Bibliotek.Services\SBO.SBO_Bibliotek.Services.csproj" />
+  </ItemGroup>
+
+</Project>
