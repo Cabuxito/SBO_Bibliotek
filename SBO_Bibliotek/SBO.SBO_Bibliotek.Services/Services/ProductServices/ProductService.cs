@@ -11,10 +11,10 @@ namespace SBO.SBO_Bibliotek.Services.Services.ProductServices
 {
     public class ProductService 
     {
-        public string AddBook(string ISBN, string booktitle, string publication, string publisher )
+        public string AddBook(string ISBN, string booktitle, string publication, string publisher, string genrename, string author)
         {
             BooksConnections booksConnections = new BooksConnections();
-            return booksConnections.AddBook( ISBN, booktitle, publication, publisher );
+            return booksConnections.AddBook(ISBN, booktitle, publication, publisher, genrename, author);
         }
 
         public List<BooksModel> GetAllBooks ()
