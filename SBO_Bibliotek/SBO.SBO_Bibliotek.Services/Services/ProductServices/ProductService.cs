@@ -9,33 +9,38 @@ using System.Threading.Tasks;
 
 namespace SBO.SBO_Bibliotek.Services.Services.ProductServices
 {
-    public class ProductService 
+    public class ProductService : IProductService
     {
+        #region Books
+
         public string AddBook(string ISBN, string booktitle, string publication, string publisher, string genrename, string author)
         {
             BooksConnections booksConnections = new BooksConnections();
             return booksConnections.AddBook(ISBN, booktitle, publication, publisher, genrename, author);
         }
 
-        public List<BooksModel> GetAllBooks ()
+        public List<BooksModel> GetAllBooks()
         {
             BooksConnections booksConnections = new BooksConnections();
             List<Books> listOfBooks = booksConnections.GetAllBooks();
             List<BooksModel> books = new List<BooksModel>();
-            foreach ( Books item in listOfBooks )
+            foreach ( var item in listOfBooks )
             {
                 books.Add(new BooksModel
                 {
                     ISBN = item.ISBN,
                     Title = item.Book_Title,
                     Publication = item.Publication,
-                    Publisher = item.Publisher
+                    Publisher = item.Publisher,
+                    Genre = item.Genre_Name,
+                    Author = item.Author_Name
+
                 });
             }
             return books;
         }
 
-        public BooksModel GetBookByISBN (string ISBN)
+        public BooksModel GetBookByISBN(string ISBN)
         {
             BooksConnections booksConnections = new BooksConnections();
             Books listOfBooks = booksConnections.GetBookByISBN(ISBN);
@@ -48,14 +53,14 @@ namespace SBO.SBO_Bibliotek.Services.Services.ProductServices
             };
             return books;
         }
-        
-        public string DeleteBooksByISBN (string ISBN)
+
+        public string DeleteBooksByISBN(string ISBN)
         {
-            ProductService productService = new ProductService();
-            return productService.DeleteBooksByISBN(ISBN);
+            BooksConnections productService = new BooksConnections();
+            return productService.DeleteBookByISBN(ISBN);
         }
 
-        public BooksModel GetBooksInfoByISBN (string ISBN)
+        public BooksModel GetBooksInfoByISBN(string ISBN)
         {
             BooksConnections productService = new BooksConnections();
             Books listOfBooks = productService.GetBooksInfoByISBN(ISBN);
@@ -71,5 +76,16 @@ namespace SBO.SBO_Bibliotek.Services.Services.ProductServices
             return bookInfo;
         }
 
+        #endregion
+
+        #region Genre
+
+        public string AddGenre(string genrename)
+        {
+            GenreConnections genreConnections = new GenreConnections();
+            return genreConnections.AddGenre(genrename);
+        }
+
+        #endregion
     }
 }
