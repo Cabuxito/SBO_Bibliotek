@@ -17,7 +17,7 @@ namespace SBO.SBO_Bibliotek.Domain.Connections
         /// <summary>
         /// ConnectionString constructor.
         /// </summary>
-        public BooksConnections ()
+        public BooksConnections()
         {
             _sqlConnection = new SqlConnection(_connectionString);
         }
@@ -27,7 +27,7 @@ namespace SBO.SBO_Bibliotek.Domain.Connections
         /// </summary>
         /// <param name="StoredProcedure"></param>
         /// <returns></returns>
-        public SqlCommand MyCommand (string StoredProcedure)
+        public SqlCommand MyCommand(string StoredProcedure)
         {
             SqlCommand myCommand = new SqlCommand(StoredProcedure);
             myCommand.CommandType = CommandType.StoredProcedure;
@@ -42,13 +42,15 @@ namespace SBO.SBO_Bibliotek.Domain.Connections
         /// <param name="bookname"></param>
         /// <param name="bookQuantity"></param>
         /// <returns></returns>
-        public string AddBook (string ISBN, string booktitle, string publication, string publisher)
+        public string AddBook(string ISBN, string booktitle, string publication, string publisher, string genrename, string author)
         {
             SqlCommand myCommand = MyCommand("spAddBooks");
             myCommand.Parameters.AddWithValue("@ISBN", ISBN);
-            myCommand.Parameters.AddWithValue("@Book_Title", booktitle);
-            myCommand.Parameters.AddWithValue("@Book_Publication", publication);
-            myCommand.Parameters.AddWithValue("@Book_Publisher", publisher);
+            myCommand.Parameters.AddWithValue("@Title", booktitle);
+            myCommand.Parameters.AddWithValue("@Publication", publication);
+            myCommand.Parameters.AddWithValue("@Publisher", publisher);
+            myCommand.Parameters.AddWithValue("@Genre_Name", genrename);
+            myCommand.Parameters.AddWithValue("@Author_Name", author);
             _sqlConnection.Open();
             myCommand.ExecuteNonQuery();
             _sqlConnection.Close();
@@ -58,7 +60,7 @@ namespace SBO.SBO_Bibliotek.Domain.Connections
         /// Show all Books.
         /// </summary>
         /// <returns></returns>
-        public List<Books> GetAllBooks ()
+        public List<Books> GetAllBooks()
         {
             SqlCommand myCommand = MyCommand("spGetAllBooks");
             try
@@ -73,12 +75,14 @@ namespace SBO.SBO_Bibliotek.Domain.Connections
                         Books.Add(new Books
                         {
                             ISBN = myReader.GetString(0),
-                            Book_Title= myReader.GetString(1),
-                            Publication = myReader.GetDateTime(2).ToString(),
-                            Publisher = myReader.GetString(3)
-                        });
-                        return Books;
+                            Book_Title = myReader.GetString(1),
+                            Publication = myReader.GetDateTime(2).Year.ToString(),
+                            Publisher = myReader.GetString(3),
+                            Genre_Name = myReader.GetString(4),
+                            Author_Name = myReader.GetString(5)
+                        }); ;
                     }
+                    return Books;
                 }
             }
             finally
@@ -92,7 +96,7 @@ namespace SBO.SBO_Bibliotek.Domain.Connections
         /// </summary>
         /// <param name="id"></param>
         /// <returns>OneBook</returns>
-        public Books GetBookByISBN (string ISBN)
+        public Books GetBookByISBN(string ISBN)
         {
             SqlCommand myCommand = MyCommand("spGetBooksByISBN");
             myCommand.Parameters.AddWithValue("@ISBN", ISBN);
@@ -126,7 +130,7 @@ namespace SBO.SBO_Bibliotek.Domain.Connections
         /// </summary>
         /// <param name="ISBN"></param>
         /// <returns></returns>
-        public string DeleteBookByISBN (string ISBN)
+        public string DeleteBookByISBN(string ISBN)
         {
             SqlCommand myCommand = MyCommand("spDeleteBookByISBN");
             myCommand.Parameters.AddWithValue("@ISBN", ISBN);
@@ -142,7 +146,7 @@ namespace SBO.SBO_Bibliotek.Domain.Connections
             return "Book was deleted.";
         }
 
-        public Books GetBooksInfoByISBN (string ISBN)
+        public Books GetBooksInfoByISBN(string ISBN)
         {
             SqlCommand myCommand = MyCommand("spGetAllBookInfoByISBN");
             myCommand.Parameters.AddWithValue("@ISBN", ISBN);

@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace SBO.SBO_Bibliotek.Web.Pages.Loaners
+namespace SBO.SBO_Bibliotek.Web.Pages.Authors
 {
-    public class Loaner_ShowModel : PageModel
+    public class Authors_ShowModel : PageModel
     {
         public void OnGet()
         {

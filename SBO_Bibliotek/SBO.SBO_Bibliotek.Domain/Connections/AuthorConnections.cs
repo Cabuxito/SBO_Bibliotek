@@ -130,7 +130,5 @@ namespace SBO.SBO_Bibliotek.Domain.Connections
             }
             return "Author was deleted.";
         }
-
-
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SBO.SBO_Bibliotek.Services.Services.UserServices
 {
-    public class UserService
+    public class UserService : IUserService
     {
         #region Authors
 
@@ -19,18 +19,18 @@ namespace SBO.SBO_Bibliotek.Services.Services.UserServices
         /// <param name="authorname"></param>
         /// <param name="publisher"></param>
         /// <returns>AddAuthors Method</returns>
-        public string AddAuthors (AuthorsModel Author)
+        public string AddAuthors(AuthorsModel Author)
         {
             AuthorConnections AuthorConnection = new AuthorConnections();
             return AuthorConnection.AddAuthors(Author.AuthorsName);
         }
 
-        public AuthorsModel GetAuthorByName (string name)
+        public AuthorsModel GetAuthorsByName(string name)
         {
             AuthorConnections AuthorConnection = new AuthorConnections();
             Authors authors = AuthorConnection.GetAuthorsByName(name);
-            AuthorsModel mymodel = new AuthorsModel 
-            { 
+            AuthorsModel mymodel = new AuthorsModel
+            {
                 AuthorsName = authors.AuthorsName
             };
             return mymodel;
@@ -43,7 +43,7 @@ namespace SBO.SBO_Bibliotek.Services.Services.UserServices
             List<Authors> AllAuthors = AuthorConnection.GetAllAuthors();
             foreach ( Authors item in AllAuthors )
             {
-                AuthorList.Add(new AuthorsModel 
+                AuthorList.Add(new AuthorsModel
                 {
                     AuthorsName = item.AuthorsName
                 });
@@ -60,13 +60,13 @@ namespace SBO.SBO_Bibliotek.Services.Services.UserServices
 
         #region Loaner
 
-        public string AddLoaner(LoanerModel Loaner) 
+        public string AddLoaner(LoanerModel Loaner)
         {
             LoanerConnections loanerConnections = new LoanerConnections();
-            return loanerConnections.AddLoaner(Loaner.LoanerEmail, Loaner.LoanerFirstname,Loaner.LoanerLastname, Loaner.LoanerPhone);
+            return loanerConnections.AddLoaner(Loaner.LoanerEmail, Loaner.LoanerFirstname, Loaner.LoanerLastname, Loaner.LoanerPhone);
         }
 
-        public LoanerModel GetLoanerById (int Id)
+        public LoanerModel GetLoanerById(int Id)
         {
             LoanerConnections loanerConnection = new LoanerConnections();
             Loaner loaners = loanerConnection.GetLoanerById(Id);
@@ -98,7 +98,7 @@ namespace SBO.SBO_Bibliotek.Services.Services.UserServices
             return loanerList;
         }
 
-        public string RemoveBookFromLoaner (int Id)
+        public string RemoveBookFromLoaner(int Id)
         {
             LoanerConnections loanerConnections = new LoanerConnections();
             return loanerConnections.RemoveBookFromLoaner(Id);

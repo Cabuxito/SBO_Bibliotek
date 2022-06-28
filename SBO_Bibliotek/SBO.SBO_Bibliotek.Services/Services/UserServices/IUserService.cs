@@ -12,7 +12,7 @@ namespace SBO.SBO_Bibliotek.Services.Services.UserServices
         public string AddAuthors(AuthorsModel Author);
         public List<AuthorsModel> GetAllAuthors();
         public AuthorsModel GetAuthorsByName(string name);
-        public string AddLoaner(string email, string name, int phone);
+        public string AddLoaner(LoanerModel Loaner);
         public List<LoanerModel> GetAllLoaners();
         public LoanerModel GetLoanerById(int id);
         public string RemoveBookFromLoaner(int LoanerId);
