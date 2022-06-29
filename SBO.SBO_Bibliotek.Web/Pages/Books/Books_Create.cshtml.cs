@@ -6,7 +6,12 @@ namespace SBO.SBO_Bibliotek.Web.Pages.Books
 {
     public class Books_CreateModel : PageModel
     {
-        ProductService myServices = new ProductService();
+        private readonly IProductService _productService;
+
+        public Books_CreateModel (IProductService productService)
+        {
+            _productService = productService;
+        }
 
         [BindProperty]
         public string ISBN { get; set; }
@@ -23,8 +28,8 @@ namespace SBO.SBO_Bibliotek.Web.Pages.Books
 
         public IActionResult OnPost()
         {
-            myServices.AddBook(ISBN, Title, Year, Publisher, Genre, Author);
-            return RedirectToPage("/Books/Books_Create");
+            _productService.AddBook(ISBN, Title, Year, Publisher, Genre, Author);
+            return RedirectToPage("/Books/Books_Show");
         }
     }
 }

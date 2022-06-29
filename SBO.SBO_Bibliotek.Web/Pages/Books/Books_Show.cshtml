@@ -27,11 +27,12 @@
                 <td>@item.Publisher</td>
                 <td>@item.Title</td>
                 <td>@item.Author</td>
-                <td><a class="btn btn-dark btn-group-sm" asp-page="/Books/Books_Update">Update</a></td>
+                <td><a class="btn btn-dark btn-group-sm" asp-route-UpdateISBN="@item.ISBN" asp-page="/Books/Books_Update">Edit</a></td>
                 <td>
-                 <form asp-page-handler="DeleteButton" asp-route-isbn="@item.ISBN" method="post">
-                     <button type="submit" class="btn btn-warning btn-group-sm">Delete</button>
-                 </form></td>
+                    <form asp-page-handler="DeleteButton" asp-route-isbn="@item.ISBN" method="post">
+                        <button type="submit" class="btn btn-warning btn-group-sm">Delete</button>
+                    </form>
+                </td>
             </tr>
         </tbody>
     }

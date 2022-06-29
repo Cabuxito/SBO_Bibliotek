@@ -1,7 +1,12 @@
+using SBO.SBO_Bibliotek.Services.Services.ProductServices;
+using SBO.SBO_Bibliotek.Services.Services.UserServices;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 

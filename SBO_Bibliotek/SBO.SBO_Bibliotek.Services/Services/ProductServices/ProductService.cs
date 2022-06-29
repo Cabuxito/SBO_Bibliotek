@@ -34,7 +34,6 @@ namespace SBO.SBO_Bibliotek.Services.Services.ProductServices
                     Publisher = item.Publisher,
                     Genre = item.Genre_Name,
                     Author = item.Author_Name
-
                 });
             }
             return books;

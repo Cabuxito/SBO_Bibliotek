@@ -1,4 +1,37 @@
-﻿@page
+﻿@page "{UpdateISBN:int}"
 @model SBO.SBO_Bibliotek.Web.Pages.Books.Books_UpdateModel
 @{
 }
+<h4 class="d-flex justify-content-center">Update book</h4>
+<div class="d-flex justify-content-center">
+    <form action="" method="post" class="col-4">
+        <div class="mb-3 ">
+            <label class="form-label" for="BookISBN">ISBN:</label>
+            <input type="text" id="BookISBN" class="form-control" asp-for="UpdateISBN" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Title:</label>
+            <input type="text" class="form-control" asp-for="UpdateTitle" value="@Model.MyBooksModel.Title"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Publication year:</label>
+            <input type="datetime" class="form-control" asp-for="UpdateYear" value="@Model.MyBooksModel.Publication"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Publisher:</label>
+            <input type="text" class="form-control" asp-for="UpdatePublisher" value="@Model.MyBooksModel.Publisher" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Genre:</label>
+            <input type="text" class="form-control" asp-for="UpdateGenre" value="@Model.MyBooksModel.Genre"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Author: </label>
+            <input type="text" class="form-control" asp-for="UpdateAuthor" value="@Model.MyBooksModel.Author"/>
+        </div>
+        <div class="d-flex justify-content-center ">
+            <button type="submit" class="btn btn-dark m-1">Update</button>
+            <a class="btn btn-dark m-1 " asp-page="/Books/Books_Update">Cancel</a>
+        </div>
+    </form>
+</div>
