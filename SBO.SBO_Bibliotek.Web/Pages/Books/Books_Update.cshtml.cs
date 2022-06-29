@@ -31,7 +31,7 @@ namespace SBO.SBO_Bibliotek.Web.Pages.Books
         
         public void OnGet()
         {
-            _productService.GetBooksInfoByISBN(UpdateISBN);
+           MyBooksModel = _productService.GetBooksInfoByISBN(UpdateISBN);
         }
 
     }
