@@ -41,13 +41,14 @@ namespace SBO.SBO_Bibliotek.Domain.Connections
         /// <param name="name"></param>
         /// <param name="phone"></param>
         /// <returns></returns>
-        public string AddLoaner(string email, string firstname, string lastname, int phone)
+        public string AddLoaner(string email, string firstname, string lastname, int phone, string ISBN)
         {
             SqlCommand myCommand = MyCommand("spAddLoaner");
             myCommand.Parameters.AddWithValue("@Email", email);
             myCommand.Parameters.AddWithValue("@FirstName", firstname);
             myCommand.Parameters.AddWithValue("@LastName", lastname);
             myCommand.Parameters.AddWithValue("@Phone", phone);
+            myCommand.Parameters.AddWithValue("@ISBN", ISBN);
             _sqlConnection.Open();
             myCommand.ExecuteNonQuery();
             _sqlConnection.Close();
