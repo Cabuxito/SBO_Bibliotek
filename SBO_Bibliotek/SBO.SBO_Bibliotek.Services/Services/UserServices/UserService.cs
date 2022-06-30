@@ -89,10 +89,12 @@ namespace SBO.SBO_Bibliotek.Services.Services.UserServices
             {
                 loanerList.Add(new LoanerModel
                 {
+                    Id = item.LoanerId,
                     LoanerEmail = item.LoanerEmail,
                     LoanerFirstname = item.FirstName,
                     LoanerLastname = item.LastName,
-                    LoanerPhone = item.LoanerPhone
+                    LoanerPhone = item.LoanerPhone,
+                    LoanerBook = item.LoanerBook
                 });
             }
             return loanerList;

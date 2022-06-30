@@ -71,14 +71,16 @@ namespace SBO.SBO_Bibliotek.Domain.Connections
                     {
                         loaners.Add(new Loaner
                         {
-                            ISBN = myReader.GetString(0),
-                            LoanerEmail = myReader.GetString(1),
-                            FirstName = myReader.GetString(2),
-                            LastName = myReader.GetString(3),
-                            LoanerPhone = myReader.GetInt32(4)
+                            LoanerId = myReader.GetInt32(0),
+                            FirstName = myReader.GetString(1),
+                            LastName = myReader.GetString(2),
+                            LoanerEmail = myReader.GetString(3),
+                            LoanerPhone = myReader.GetInt32(4),
+                            LoanerBook = myReader.GetString(5),
+
                         });
-                        return loaners;
                     }
+                    return loaners;
                 }
             }
             finally

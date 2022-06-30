@@ -14,5 +14,6 @@ namespace SBO.SBO_Bibliotek.Domain.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int LoanerPhone { get; set; }
+        public string LoanerBook { get; set; }
     }
 }

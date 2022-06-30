@@ -14,5 +14,6 @@ namespace SBO.SBO_Bibliotek.Services.Models
         public string LoanerFirstname { get; set; }
         public string LoanerLastname { get; set; }
         public int LoanerPhone { get; set; }
+        public string LoanerBook { get; set; }
     }
 }

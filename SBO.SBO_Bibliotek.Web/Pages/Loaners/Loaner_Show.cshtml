@@ -2,17 +2,16 @@
 @model SBO.SBO_Bibliotek.Web.Pages.Loaners.Loaner_ShowModel
 @{
 }
-<a class="btn btn-group-lg btn-dark" asp-page="/Books/Books_Create">New book</a>
+<a class="btn btn-group-lg btn-dark" asp-page="/Books/Books_Create">New Loaner</a>
 <table class="table table-hover">
 
     <thead>
         <tr>
-            <th scope="col">ISBN</th>
-            <th scope="col">Title</th>
-            <th scope="col">Publication</th>
-            <th scope="col">Publisher</th>
-            <th scope="col">Genre</th>
-            <th scope="col">Author</th>
+            <th scope="col">Email</th>
+            <th scope="col">Name</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">Phone</th>
+            <th scope="col">LoanerBook</th>
             <th scope="col">Update</th>
             <th scope="col">Delete</th>
         </tr>
@@ -21,12 +20,11 @@
     {
         <tbody>
             <tr>
-                <th scope="row">@item.ISBN</th>
+                <th scope="row">@item.LoanerEmail</th>
                 <td>@item.LoanerFirstname</td>
                 <td>@item.LoanerLastname</td>
-                <td>@item.LoanerEmail</td>
                 <td>@item.LoanerPhone</td>
-                <td>@item.ISBN</td>
+                <td>@item.LoanerBook</td>
                 <td><a class="btn btn-dark btn-group-sm" asp-route-UpdateISBN="@item.ISBN" asp-page="/Books/Books_Update">Edit</a></td>
                 <td>
                     <form asp-page-handler="DeleteButton" asp-route-isbn="@item.ISBN" method="post">
