@@ -25,7 +25,7 @@
                 <td>@item.LoanerLastname</td>
                 <td>@item.LoanerPhone</td>
                 <td>@item.LoanerBook</td>
-                <td><a class="btn btn-dark btn-group-sm" asp-route-UpdateISBN="@item.ISBN" asp-page="/Books/Books_Update">Edit</a></td>
+                <td><a class="btn btn-dark btn-group-sm" asp-route-UpdateLoaner="@item.Id" asp-page="/Loaners/Loaner_Update">Edit</a></td>
                 <td>
                     <form asp-page-handler="DeleteButton" asp-route-isbn="@item.ISBN" method="post">
                         <button type="submit" class="btn btn-warning btn-group-sm">Delete</button>

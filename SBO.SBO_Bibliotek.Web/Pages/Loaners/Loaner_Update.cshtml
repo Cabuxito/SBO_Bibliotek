@@ -1,4 +1,33 @@
-﻿@page
+﻿@page "{UpdateLoaner:int}"
 @model SBO.SBO_Bibliotek.Web.Pages.Loaners.Loaner_UpdateModel
 @{
 }
+<h4 class="d-flex justify-content-center">Update Loaner</h4>
+<div class="d-flex justify-content-center">
+    <form action="" method="post" class="col-4">
+        <div class="mb-3 ">
+            <label class="form-label" for="LoanerEmail">Email:</label>
+            <input type="text" for="Email" class="form-control" asp-for="Email" value="@Model.myLoanerModel.LoanerEmail" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Name:</label>
+            <input type="text" class="form-control" asp-for="Name" value="@Model.myLoanerModel.LoanerFirstname"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Lastname:</label>
+            <input type="datetime" class="form-control" asp-for="LastName" value="@Model.myLoanerModel.LoanerLastname"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Phone:</label>
+            <input type="text" class="form-control" asp-for="Phone" value="@Model.myLoanerModel.LoanerPhone" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">LoanerBook:</label>
+            <input type="text" class="form-control" asp-for="LoanerBook" value="@Model.myLoanerModel.LoanerBook"/>
+        </div>
+        <div class="d-flex justify-content-center ">
+            <button type="submit" class="btn btn-dark m-1">Update</button>
+            <a class="btn btn-dark m-1 " asp-page="/Loaners/Loaner_Update">Cancel</a>
+        </div>
+    </form>
+</div>

@@ -63,7 +63,7 @@ namespace SBO.SBO_Bibliotek.Services.Services.UserServices
         public string AddLoaner(LoanerModel Loaner)
         {
             LoanerConnections loanerConnections = new LoanerConnections();
-            return loanerConnections.AddLoaner(Loaner.LoanerEmail, Loaner.LoanerFirstname, Loaner.LoanerLastname, Loaner.LoanerPhone);
+            return loanerConnections.AddLoaner(Loaner.LoanerEmail, Loaner.LoanerFirstname, Loaner.LoanerLastname, Loaner.LoanerPhone, Loaner.ISBN);
         }
 
         public LoanerModel GetLoanerById(int Id)
