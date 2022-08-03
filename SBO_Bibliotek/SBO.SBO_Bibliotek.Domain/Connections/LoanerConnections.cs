@@ -147,6 +147,7 @@ namespace SBO.SBO_Bibliotek.Domain.Connections
             }
             return "Succes, you have loan a book";
         }
+
         /// <summary>
         /// Remove Book from Loaner by input af Loaner_id.
         /// </summary>
@@ -167,5 +168,16 @@ namespace SBO.SBO_Bibliotek.Domain.Connections
             }
             return "Book was returned.";
         }
+        
+        /// <summary>
+        /// Update one loaner by ID.
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public string UpdateLoanerById(int Id)
+        {
+            return "";
+        }
+
     }
 }
